@@ -25,21 +25,31 @@ uint8_t separateItems(char* itemsLine, uint8_t itemsLineSize, items_t* items) {
     uint8_t attributesCounter = 0;
 
     token = strtok(itemsLine, ";");
-    while (token != NULL) {
+    while (token != NULL && attributesCounter <= NUMBER_ATTRIBUTES) {
         attributesCounter++;
 
         switch (attributesCounter) {
-            case 1:
+            case ORDER_NAME:
+                if (strcpy(items->name, token) == NULL) {
+                    printf("ERROR PARSING NAME OF ITEM");
+                    return 1;
+                }
                 break;
-            case 2:
+            case ORDER_UNITS:
+                items->units = (int)token;
                 break;
-            case 3:
+            case ORDER_UNITPRICE:
+                items->unitPrice = (int)token;
                 break;
-            case 4:
+            case ORDER_TOTALPRICE:
+                items->totalPrice = (int)token;
                 break;
             default:
+                printf("ERROR PARSING ITEM");
                 return 1;
         }
     }
+
+    return 0;
 
 }

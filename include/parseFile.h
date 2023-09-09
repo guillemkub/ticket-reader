@@ -1,8 +1,15 @@
 #include "stdio.h"
 #include "stdint.h"
+#include "string.h"
 
-#define MAX_STRING      255
-#define MAX_ITEMS       200
+#define MAX_STRING          255
+#define MAX_ITEMS           200
+#define NUMBER_ATTRIBUTES   4
+#define ORDER_NAME          1
+#define ORDER_UNITS         2
+#define ORDER_UNITPRICE     3
+#define ORDER_TOTALPRICE    4
+
 
 
 typedef struct items {
